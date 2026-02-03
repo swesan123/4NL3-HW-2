@@ -1,0 +1,9 @@
+name: 4nl3
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.14
+  - nltk
+  - matplotlib
+  - pip

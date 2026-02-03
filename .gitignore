@@ -1,0 +1,74 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# =========================
+# Conda / Virtual Envs
+# =========================
+.env
+.venv
+venv/
+env/
+miniconda*/
+anaconda*/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# OS / Editor files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# NLTK downloaded data
+# =========================
+nltk_data/
+*/nltk_data/
+
+# =========================
+# Output files
+# =========================
+output/
+output_backup/
+
+# =========================
+# Testing
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# =========================
+# Large datasets / logs
+# =========================
+*.gz
+*.zip
+
+# =========================
+# Misc
+# =========================
+.cache/
+*.swp
+*.swo
+*~
+
+# =========================
+# latex
+# =========================
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
