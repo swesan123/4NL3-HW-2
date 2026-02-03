@@ -1,0 +1,1 @@
+Jun  9 06:06:30 combo kernel: device-mapper: 4.1.0-ioctl (2003-12-10) initialised: dm@uk.sistina.com

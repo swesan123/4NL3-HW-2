@@ -1,0 +1,1 @@
+Jun  9 06:06:34 combo kernel: 0000:01:0c.0: 3Com PCI 3c905C Tornado at 0xec80. Vers LK1.1.19

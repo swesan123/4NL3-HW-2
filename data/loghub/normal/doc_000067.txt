@@ -1,0 +1,1 @@
+Jun  9 06:06:21 combo kernel: Transparent bridge - 0000:00:1e.0

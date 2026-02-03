@@ -1,0 +1,1 @@
+Jun  9 10:07:14 combo named[2275]: listening on IPv4 interface eth0:10, 63.126.79.83#53

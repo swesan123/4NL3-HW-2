@@ -1,0 +1,1 @@
+Jun 30 12:48:41 combo sshd(pam_unix)[18547]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=biblioteka.wsi.edu.pl

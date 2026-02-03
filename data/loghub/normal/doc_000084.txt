@@ -1,0 +1,1 @@
+Jun  9 06:06:21 combo kernel: agpgart: Maximum main memory to use for agp memory: 93M

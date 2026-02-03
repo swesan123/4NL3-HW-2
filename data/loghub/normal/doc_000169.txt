@@ -1,0 +1,1 @@
+Jun  9 06:06:29 combo kernel: uhci_hcd 0000:00:1f.2: UHCI Host Controller

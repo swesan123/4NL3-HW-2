@@ -1,0 +1,1 @@
+Jun  9 06:07:20 combo ntpd[2296]: frequency initialized 0.000 PPM from /var/lib/ntp/drift

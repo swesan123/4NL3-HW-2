@@ -1,0 +1,1 @@
+Jun  9 06:06:34 combo kernel: lp0: using parport0 (polling).

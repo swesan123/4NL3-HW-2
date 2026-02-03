@@ -1,0 +1,1 @@
+Jun 10 11:31:46 combo kernel: Serial: 8250/16550 driver $Revision: 1.90 $ 8 ports, IRQ sharing enabled

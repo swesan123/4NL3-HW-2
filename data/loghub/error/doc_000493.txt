@@ -1,0 +1,1 @@
+Jul  9 19:34:06 combo sshd(pam_unix)[23781]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=p15105218.pureserver.info  user=root

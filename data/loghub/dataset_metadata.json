@@ -1,0 +1,14 @@
+{
+  "categories": {
+    "error": 500,
+    "normal": 500
+  },
+  "total_documents": 1000,
+  "min_docs_per_category": 100,
+  "max_docs_per_category": 500,
+  "source_info": {
+    "dataset_name": "Linux_Log_Categorized",
+    "source": "data/Linux.txt",
+    "method": "Split by error keywords"
+  }
+}

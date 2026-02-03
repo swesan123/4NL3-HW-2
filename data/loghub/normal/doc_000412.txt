@@ -1,0 +1,1 @@
+Jun 10 11:31:45 combo kernel: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)

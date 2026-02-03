@@ -1,0 +1,1 @@
+Jun 10 11:31:44 combo kernel:  BIOS-e820: 0000000007eae000 - 0000000008000000 (reserved)

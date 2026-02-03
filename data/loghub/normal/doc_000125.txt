@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo kernel:  hda: hda1 hda2 hda3

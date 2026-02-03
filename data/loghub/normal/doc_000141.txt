@@ -1,0 +1,1 @@
+Jun  9 06:06:25 combo kernel: IP: routing cache hash table of 512 buckets, 4Kbytes

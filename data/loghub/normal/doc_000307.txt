@@ -1,0 +1,1 @@
+Jun  9 06:07:27 combo udev[2725]: creating device node '/udev/vcsa1'

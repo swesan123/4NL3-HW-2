@@ -1,0 +1,1 @@
+Jun  9 06:06:30 combo kernel: kjournald starting.  Commit interval 5 seconds

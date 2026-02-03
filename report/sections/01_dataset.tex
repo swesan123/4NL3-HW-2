@@ -5,38 +5,45 @@
 
 \section{Dataset}
 
-% TODO: Fill in with actual dataset information
-% This section should include:
-% - Dataset description and source (LogHub)
-% - Why it's interesting/useful
-% - How data was collected
-% - How categories were chosen
-% - How documents were split
-% - Tables showing:
-%   - Number of documents per category
-%   - Average number of tokens per document per category
-%   - Total corpus statistics
+For this assignment, I analyzed a Linux system log dataset categorized into error and normal log entries. The dataset was derived from the Linux.txt file used in Homework 1, which contains authentication and kernel logs from a Linux system.
 
-\textit{This section will be populated after running the corpus analysis pipeline.}
+\subsection{Dataset Source and Collection}
 
-Example structure:
+The original dataset is a Linux system log file containing 308,039 raw tokens collected from authentication and kernel logs. To create distinct categories for corpus analysis, I split the log file into two categories based on the presence of error-related keywords:
+
 \begin{itemize}
-    \item \textbf{Dataset Source}: LogHub repository
-    \item \textbf{Categories}: [To be filled]
-    \item \textbf{Document Count}: [To be filled]
-    \item \textbf{Collection Method}: [To be filled]
+    \item \textbf{Error logs}: Log entries containing keywords such as ``error'', ``failed'', ``failure'', ``killed'', ``denied'', ``refused'', ``timeout'', ``exception'', ``critical'', or ``alert''
+    \item \textbf{Normal logs}: Log entries that do not contain error keywords, representing successful operations, system startup messages, and routine kernel operations
 \end{itemize}
 
-% Table example (to be filled with actual data):
-% \begin{table}[H]
-% \centering
-% \begin{tabular}{lcc}
-% \toprule
-% Category & Documents & Avg Tokens/Doc \\
-% \midrule
-% Category 1 & XXX & XXX \\
-% Category 2 & XXX & XXX \\
-% \bottomrule
-% \end{tabular}
-% \caption{Dataset statistics by category}
-% \end{table}
+This categorization approach is meaningful because it distinguishes between system events that indicate problems (errors) and those that represent normal system operation. This distinction is valuable for understanding how different types of system events are expressed in log language.
+
+\subsection{Document Splitting}
+
+Each log entry (line) in the original file was treated as a separate document. This approach is appropriate for system logs because each line typically represents a complete, self-contained event. The splitting was performed by:
+
+\begin{enumerate}
+    \item Reading the log file line by line
+    \item Classifying each line as error or normal based on keyword presence
+    \item Writing each line to a separate document file in the appropriate category directory
+    \item Limiting each category to 500 documents to ensure balanced representation and manageable file sizes
+\end{enumerate}
+
+This resulted in 500 documents per category, meeting the requirement of at least 100 documents per category.
+
+\subsection{Dataset Statistics}
+
+\begin{table}[H]
+\centering
+\caption{Dataset statistics by category}
+\begin{tabular}{lccc}
+\toprule
+Category & Documents & Avg Tokens/Doc & Total Words \\
+\midrule
+Error & 500 & 13.1 & 6543 \\
+Normal & 500 & 10.5 & 5247 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dataset contains 1000 total documents (500 per category) with an average of 13.1 tokens per document for error logs and 10.5 tokens per document for normal logs. The error category has a slightly higher average token count, which may reflect that error messages tend to be more verbose, containing additional diagnostic information.

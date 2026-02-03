@@ -1,0 +1,1 @@
+Jun 25 04:41:49 combo sshd(pam_unix)[31035]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=massive.merukuru.org

@@ -1,0 +1,1 @@
+Jun 10 04:02:23 combo xinetd[2003]: file descriptor of service comsat has been closed

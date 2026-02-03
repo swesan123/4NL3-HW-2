@@ -1,0 +1,1 @@
+Jun  9 06:06:29 combo kernel: hub 1-0:1.0: 2 ports detected

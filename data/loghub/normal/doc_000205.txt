@@ -1,0 +1,1 @@
+Jun  9 06:06:34 combo kernel: Bluetooth: RFCOMM socket layer initialized

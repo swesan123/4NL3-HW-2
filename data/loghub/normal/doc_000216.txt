@@ -1,0 +1,1 @@
+Jun  9 06:06:41 combo sendmail: sm-client startup succeeded

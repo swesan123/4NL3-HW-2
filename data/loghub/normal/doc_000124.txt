@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo smartd[1755]: Monitoring 1 ATA and 0 SCSI devices

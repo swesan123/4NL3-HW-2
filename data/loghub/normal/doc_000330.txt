@@ -1,0 +1,1 @@
+Jun  9 06:11:41 combo ntpd[2296]: kernel time sync enabled 0001

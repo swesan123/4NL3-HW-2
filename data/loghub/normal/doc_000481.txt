@@ -1,0 +1,1 @@
+Jun 10 11:31:47 combo kernel: VFS: Mounted root (ext2 filesystem).

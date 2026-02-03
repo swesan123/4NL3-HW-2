@@ -1,0 +1,1 @@
+Jun  9 06:06:22 combo kernel: agpgart: AGP aperture is 64M @ 0xf4000000

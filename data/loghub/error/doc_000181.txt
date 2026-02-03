@@ -1,0 +1,1 @@
+Jun 15 14:53:34 combo sshd(pam_unix)[23669]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=061092085098.ctinets.com

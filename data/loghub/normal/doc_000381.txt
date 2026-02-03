@@ -1,0 +1,1 @@
+Jun 10 11:31:45 combo kernel: CPU: L1 I cache: 16K, L1 D cache: 16K

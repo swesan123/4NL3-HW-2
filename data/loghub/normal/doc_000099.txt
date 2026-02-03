@@ -1,0 +1,1 @@
+Jun  9 06:06:23 combo kernel: ide: Assuming 33MHz system bus speed for PIO modes; override with idebus=xx

@@ -1,0 +1,1 @@
+Jun  9 06:06:22 combo kernel: RAMDISK driver initialized: 16 RAM disks of 16384K size 1024 blocksize

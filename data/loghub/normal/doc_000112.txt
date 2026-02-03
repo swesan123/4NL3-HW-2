@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo kernel: ide0 at 0x1f0-0x1f7,0x3f6 on irq 14

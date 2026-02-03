@@ -1,0 +1,1 @@
+Jun  9 06:06:30 combo kernel: Adding 262072k swap on /dev/hda3.  Priority:-1 extents:1

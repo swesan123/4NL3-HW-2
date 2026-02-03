@@ -1,0 +1,1 @@
+Jun  9 06:06:25 combo kernel: input: AT Translated Set 2 keyboard on isa0060/serio0

@@ -1,0 +1,1 @@
+Jun 10 11:31:46 combo kernel:     ide0: BM-DMA at 0xffa0-0xffa7, BIOS settings: hda:DMA, hdb:pio

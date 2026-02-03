@@ -1,0 +1,1 @@
+Jun  9 06:06:31 combo kernel: EXT3-fs: mounted filesystem with ordered data mode.

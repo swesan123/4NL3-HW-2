@@ -1,0 +1,1 @@
+Jun  9 06:06:25 combo kernel: serio: i8042 AUX port at 0x60,0x64 irq 12

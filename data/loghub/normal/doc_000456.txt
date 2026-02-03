@@ -1,0 +1,1 @@
+Jun 10 11:31:47 combo apmd[1748]: Version 3.0.2 (APM BIOS 1.2, Linux driver 1.16ac)

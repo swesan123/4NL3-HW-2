@@ -1,0 +1,1 @@
+Jun 10 04:09:15 combo su(pam_unix)[5493]: session opened for user news by (uid=0)

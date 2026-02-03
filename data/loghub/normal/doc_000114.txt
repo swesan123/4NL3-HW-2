@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo kernel: hdc: SAMSUNG CD-ROM SN-124, ATAPI CD/DVD-ROM drive

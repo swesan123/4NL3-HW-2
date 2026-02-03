@@ -1,0 +1,1 @@
+Jun 10 11:31:45 combo kernel: apm: BIOS version 1.2 Flags 0x03 (Driver version 1.16ac)

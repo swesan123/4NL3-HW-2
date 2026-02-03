@@ -1,0 +1,1 @@
+Jun 10 11:31:44 combo kernel: PID hash table entries: 512 (order 9: 4096 bytes)

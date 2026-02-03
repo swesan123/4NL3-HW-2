@@ -1,0 +1,1 @@
+Jun  9 06:06:21 combo kernel: Linux Plug and Play Support v0.97 (c) Adam Belay

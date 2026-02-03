@@ -1,0 +1,1 @@
+Jun 12 14:10:50 combo sshd(pam_unix)[13122]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.38.14.205

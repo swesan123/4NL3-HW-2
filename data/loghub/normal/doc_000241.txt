@@ -1,0 +1,1 @@
+Jun  9 06:07:07 combo squid[2261]: Squid Parent: child process 2264 started

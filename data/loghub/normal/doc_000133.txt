@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo kernel: drivers/usb/input/hid-core.c: v2.0:USB HID core driver

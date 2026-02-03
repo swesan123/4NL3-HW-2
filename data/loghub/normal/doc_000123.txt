@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo kernel: hda: 29336832 sectors (15020 MB) w/1916KiB Cache, CHS=29104/16/63, UDMA(66)

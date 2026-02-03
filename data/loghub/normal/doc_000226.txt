@@ -1,0 +1,1 @@
+Jun  9 06:06:46 combo gpm[2068]: imps2: Auto-detected intellimouse PS/2

@@ -1,0 +1,1 @@
+Jun  9 06:06:21 combo kernel: audit(1118297138.4294965368:0): initialized

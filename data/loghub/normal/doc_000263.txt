@@ -1,0 +1,1 @@
+Jun  9 06:07:17 combo ntpd[2296]: ntpd 4.2.0@1.1161-r Thu Mar 11 11:46:39 EST 2004 (1)

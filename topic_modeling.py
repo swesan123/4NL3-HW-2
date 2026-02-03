@@ -353,15 +353,27 @@ class TopicModeler:
         if self.lda_model is None or self.corpus is None:
             raise ValueError("Model and corpus must be prepared first.")
         
-        vis = gensimvis.prepare(
-            self.lda_model,
-            self.corpus,
-            self.dictionary,
-            mds=mds
-        )
+        # Ensure output directory exists
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        pyLDAvis.save_html(vis, str(output_path))
-        print(f"Saved visualization to {output_path}")
+        try:
+            vis = gensimvis.prepare(
+                self.lda_model,
+                self.corpus,
+                self.dictionary,
+                mds=mds
+            )
+            
+            # Fix for Python 3 compatibility issue in pyLDAvis
+            output_path_str = str(output_path)
+            with open(output_path_str, 'w', encoding='utf-8') as f:
+                html_str = pyLDAvis.prepared_data_to_html(vis)
+                f.write(html_str)
+            
+            print(f"Saved visualization to {output_path}")
+        except Exception as e:
+            print(f"Warning: Could not generate pyLDAvis visualization: {e}")
+            print("Continuing without visualization...")
     
     def save_results(self, output_dir: Path):
         """

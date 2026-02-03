@@ -1,0 +1,1 @@
+Jun  9 06:06:22 combo kernel: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A

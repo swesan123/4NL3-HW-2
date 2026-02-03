@@ -1,0 +1,1 @@
+Jun  9 06:06:23 combo kernel: ICH: IDE controller at PCI slot 0000:00:1f.1

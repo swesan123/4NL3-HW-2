@@ -1,0 +1,1 @@
+Jun 10 11:31:47 combo kernel: serio: i8042 KBD port at 0x60,0x64 irq 1

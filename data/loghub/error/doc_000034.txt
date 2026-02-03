@@ -1,0 +1,1 @@
+Jun 11 09:46:41 combo sshd(pam_unix)[6506]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=unknown.sagonet.net  user=root

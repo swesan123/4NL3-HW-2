@@ -1,0 +1,1 @@
+Jun  9 06:06:41 combo xinetd[2003]: bind failed (Address already in use (errno = 98)). service = telnet

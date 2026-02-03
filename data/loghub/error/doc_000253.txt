@@ -1,0 +1,1 @@
+Jun 22 04:30:55 combo sshd(pam_unix)[17132]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=ip-216-69-169-168.ip.secureserver.net

@@ -1,0 +1,1 @@
+Jun  9 06:06:31 combo kernel: parport0: PC-style at 0x378 (0x778) [PCSPP,TRISTATE,EPP]

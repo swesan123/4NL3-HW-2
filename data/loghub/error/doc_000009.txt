@@ -1,0 +1,1 @@
+Jun 10 11:31:44 combo kernel: Failure registering capabilities with the kernel

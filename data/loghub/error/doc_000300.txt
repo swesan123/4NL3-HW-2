@@ -1,0 +1,1 @@
+Jun 28 04:03:17 combo logrotate: ALERT exited abnormally with [1]

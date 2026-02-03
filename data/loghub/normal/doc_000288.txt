@@ -1,0 +1,1 @@
+Jun  9 06:07:26 combo udev[2555]: creating device node '/udev/vcs5'

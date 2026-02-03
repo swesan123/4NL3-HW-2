@@ -1,0 +1,1 @@
+Jun  9 06:07:34 combo udev[2903]: creating device node '/udev/vcs7'

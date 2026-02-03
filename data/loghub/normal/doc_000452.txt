@@ -1,0 +1,1 @@
+Jun 10 11:31:47 combo kernel: hdc: ATAPI 24X CD-ROM drive, 128kB Cache

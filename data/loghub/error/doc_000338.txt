@@ -1,0 +1,1 @@
+Jun 29 12:11:57 combo sshd(pam_unix)[15696]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=h64-187-1-131.gtconnect.net  user=root

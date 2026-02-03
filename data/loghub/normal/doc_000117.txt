@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo smartd[1755]: Device: /dev/hda, opened

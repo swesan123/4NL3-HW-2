@@ -1,0 +1,1 @@
+Jun  9 06:06:26 combo kernel: RAMDISK: Compressed image found at block 0

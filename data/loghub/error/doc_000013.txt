@@ -1,0 +1,1 @@
+Jun 10 11:32:03 combo xinetd[2034]: Service telnet failed to start and is deactivated.

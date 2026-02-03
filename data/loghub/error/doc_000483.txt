@@ -1,0 +1,1 @@
+Jul  7 14:18:57 combo sshd(pam_unix)[13321]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=c9063558.virtua.com.br

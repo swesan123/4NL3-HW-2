@@ -1,0 +1,1 @@
+Jun  9 06:07:19 combo ntpd[2296]: precision = 1.000 usec

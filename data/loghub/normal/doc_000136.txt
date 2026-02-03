@@ -1,0 +1,1 @@
+Jun  9 06:06:25 combo kernel: input: ImPS/2 Logitech Wheel Mouse on isa0060/serio1

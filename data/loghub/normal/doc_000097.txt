@@ -1,0 +1,1 @@
+Jun  9 06:06:22 combo kernel: Uniform Multi-Platform E-IDE driver Revision: 7.00alpha2

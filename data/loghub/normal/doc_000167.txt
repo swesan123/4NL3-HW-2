@@ -1,0 +1,1 @@
+Jun  9 06:06:28 combo kernel: USB Universal Host Controller Interface driver v2.2

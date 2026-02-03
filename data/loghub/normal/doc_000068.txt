@@ -1,0 +1,1 @@
+Jun  9 06:06:21 combo kernel: PCI: Using IRQ router PIIX/ICH [8086/2410] at 0000:00:1f.0

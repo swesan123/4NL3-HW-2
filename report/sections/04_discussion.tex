@@ -7,23 +7,26 @@
 
 \subsection{Findings About the Dataset}
 
-\textit{This subsection should describe what the results showed at a high level, written for a friend who does not have any NLP experience but is interested in the corpus.}
+The analysis revealed clear linguistic differences between error and normal log entries, demonstrating that system logs contain distinct ``languages'' for different types of events.
 
-% TODO: Fill in after analysis
-% Should discuss:
-% - What makes each category unique (based on Naive Bayes results)
-% - What topics emerged from the data (based on LDA)
-% - How categories differ from each other
-% - Interesting patterns or insights
+\textbf{What makes error logs unique}: Error logs are dominated by authentication-related language. The most distinctive words in error logs are terms like ``authentication'', ``uid=0'', ``euid=0'', ``failure;'', ``ruser='', ``logname='', and ``tty=nodevssh''. These terms form a consistent pattern describing failed SSH login attempts, where the system records user information (user ID, effective user ID, remote user, login name) along with the failure indicator. This creates a ``failure language'' that is highly structured and repetitive, making it easy to identify error conditions even without understanding the technical details.
+
+\textbf{What makes normal logs unique}: Normal logs use language focused on successful operations and system components. Words like ``succeeded'', ``startup'', ``creating'', ``device'', ``node'', ``kernel:'', and ``driver'' indicate routine system activities: services starting successfully, hardware being detected, and system components being initialized. The presence of timestamps (like ``11:31:47'' and ``06:06:24'') in the top words suggests that normal logs often contain temporal markers, possibly because successful operations are logged with more precise timing information.
+
+\textbf{How they differ}: The most striking difference is that error logs are \textit{descriptive} (they describe what went wrong and who was involved), while normal logs are \textit{action-oriented} (they describe what the system is doing). Error logs read like incident reports (``authentication failure for user=root from remote host X''), while normal logs read like activity logs (``device found, driver loaded, service started'').
+
+\textbf{Topics that emerged}: The topic modeling discovered 10 distinct themes in the logs. Error logs are primarily composed of three authentication-related topics (SSH authentication failures, authentication errors, and Kerberos authentication issues), which together account for about 77\% of error log content. Normal logs are primarily composed of network services (35\%), kernel messages (17\%), and process management (17\%), reflecting routine system operations. This separation is so clear that you could almost classify a log entry as error or normal just by looking at which topics it belongs to.
+
+\textbf{Interesting patterns}: One interesting finding is that error logs tend to be slightly longer (13.1 tokens vs 10.5 tokens on average), suggesting that errors require more explanation. Also, the topic model successfully separated different types of authentication failures (SSH vs Kerberos), showing that even within the error category, there are distinct sub-patterns. The presence of specific IP addresses and hostnames in topic terms suggests that certain error patterns are associated with particular sources, which could be useful for security analysis.
 
 \subsection{Personal Lessons Learned}
 
-\textit{This subsection should cover what lessons you personally learned during the completion of the assignment.}
+\textbf{Data collection and preprocessing}: I learned that creating meaningful categories from raw log data requires careful consideration of what makes categories distinct. Simply splitting by keywords worked well for this dataset, but I realized that for more complex logs, more sophisticated categorization (e.g., by log level, component, or time period) might be necessary. The preprocessing choices significantly impacted results: removing stopwords and applying lemmatization improved topic coherence, while stemming actually hurt performance, likely because log text contains many technical terms and proper nouns that don't benefit from aggressive stemming.
 
-% TODO: Fill in after completion
-% Topics to cover:
-% - How you found and processed the data
-% - Preprocessing effects on downstream analysis
-% - Topic modeling results and interpretation
-% - Limitations of approaches
-% - Other interesting aspects that were new
+\textbf{Understanding the results}: Interpreting Naive Bayes LLR scores was initially challenging. High LLR scores indicate words that are much more likely in one category than the other, but I had to learn that very high scores (like 5.8) don't necessarily mean the word is ``better''—they just mean it's more distinctive. For topic modeling, I discovered that manually assigning topic labels based on top terms was crucial for understanding what each topic represents. The raw topic numbers (Topic 0, Topic 1, etc.) are meaningless without interpretation.
+
+\textbf{Technical insights}: I gained appreciation for sparse matrix representations—the document-term matrix was 99.36\% sparse, meaning most entries were zero. Using SciPy sparse matrices was essential for memory efficiency. I also learned that topic coherence is a useful metric for comparing preprocessing configurations, but it's not perfect—sometimes topics with lower coherence scores are still interpretable. The experimentation showed that there's no one-size-fits-all preprocessing pipeline; the best configuration depends on the specific corpus and analysis goals.
+
+\textbf{Limitations encountered}: One limitation was that the dataset, while meeting the 100-document requirement, is relatively small (1000 documents total). This may have affected topic quality, as LDA typically benefits from larger corpora. Also, the simple keyword-based categorization might have misclassified some entries—a log line containing ``error'' in a different context (e.g., ``no error detected'') would be incorrectly labeled as an error. For production use, more sophisticated classification would be needed.
+
+\textbf{What was new and interesting}: This was my first experience with topic modeling on real-world data. I was surprised by how well LDA separated authentication failures from normal operations—the topic distributions were so distinct that they could serve as features for automatic log classification. The visualization tools (pyLDAvis) helped me understand topic relationships, though I encountered some Python 3 compatibility issues that required workarounds. Overall, the assignment demonstrated that NLP techniques can extract meaningful patterns from what initially appears to be unstructured log text.

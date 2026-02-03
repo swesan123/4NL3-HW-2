@@ -10,90 +10,264 @@
 
 \subsection{Naive Bayes Analysis}
 
-% Table: Top 10 words per category by LLR
-% TODO: Fill with actual results from naive_bayes_analysis.py output
+The Naive Bayes log-likelihood ratio analysis identified words that are most strongly associated with each category. Table~\ref{tab:naive_bayes} shows the top 10 words per category sorted by their LLR scores.
 
 \begin{table}[H]
 \centering
 \caption{Top 10 words per category by log-likelihood ratio}
+\label{tab:naive_bayes}
 \begin{tabular}{lll}
 \toprule
 Category & Rank & Word (LLR) \\
 \midrule
-% TODO: Fill with actual data
-Category 1 & 1 & word1 (X.XXXX) \\
-Category 1 & 2 & word2 (X.XXXX) \\
-% ... more rows ...
+Error & 1 & \texttt{authentication} (5.9178) \\
+Error & 2 & \texttt{uid=0} (5.8100) \\
+Error & 3 & \texttt{euid=0} (5.8100) \\
+Error & 4 & \texttt{failure;} (5.8100) \\
+Error & 5 & \texttt{ruser=} (5.8100) \\
+Error & 6 & \texttt{logname=} (5.8100) \\
+Error & 7 & \texttt{tty=nodevssh} (5.8100) \\
+Error & 8 & \texttt{user=root} (5.2068) \\
+Error & 9 & \texttt{jul} (4.2153) \\
+Error & 10 & \texttt{failed} (3.7789) \\
+Normal & 1 & \texttt{succeeded} (4.2168) \\
+Normal & 2 & \texttt{device} (4.1987) \\
+Normal & 3 & \texttt{node} (4.0626) \\
+Normal & 4 & \texttt{11:31:47} (3.9756) \\
+Normal & 5 & \texttt{startup} (3.8803) \\
+Normal & 6 & \texttt{kernel:} (3.7340) \\
+Normal & 7 & \texttt{named[2275]:} (3.6254) \\
+Normal & 8 & \texttt{creating} (3.5926) \\
+Normal & 9 & \texttt{driver} (3.5926) \\
+Normal & 10 & \texttt{06:06:24} (3.5587) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textit{Main takeaways}: [To be filled after analysis]
+\textbf{Main takeaways}: The error category is strongly characterized by authentication-related terms (``authentication'', ``uid=0'', ``euid=0'', ``failure;'', ``ruser='', ``logname='', ``tty=nodevssh'') and failure indicators (``failed''). These terms reflect SSH authentication failures and permission issues. The normal category is characterized by successful operations (``succeeded'', ``startup'', ``creating'') and system components (``device'', ``node'', ``kernel:'', ``driver'', ``named[2275]:''), indicating routine system operations and service initialization.
 
 \subsection{Topic Modeling}
 
-% Table: Top 25 terms per topic with probabilities
-% TODO: Fill with actual results from topic_modeling.py output
+Latent Dirichlet Allocation with 10 topics was applied to the corpus. Table~\ref{tab:topics} shows the top 15 terms for each topic, with manually assigned topic labels based on the most prominent terms.
 
 \begin{table}[H]
 \centering
-\caption{Top 25 terms per topic (showing first 10)}
+\caption{Top terms per topic (showing first 15 terms)}
+\label{tab:topics}
 \begin{tabular}{lll}
 \toprule
 Topic & Rank & Term (Probability) \\
 \midrule
-% TODO: Fill with actual data
-Topic 0 & 1 & term1 (0.XXXX) \\
-Topic 0 & 2 & term2 (0.XXXX) \\
-% ... more rows ...
+System Startup & 1 & \texttt{kernel:} (0.0760) \\
+ & 2 & \texttt{9} (0.0609) \\
+ & 3 & \texttt{10} (0.0368) \\
+ & 4 & \texttt{06:06:20} (0.0185) \\
+ & 5 & \texttt{succeeded} (0.0184) \\
+ & 6 & \texttt{11:31:44} (0.0180) \\
+ & 7 & \texttt{startup} (0.0170) \\
+ & 8 & \texttt{11:31:46} (0.0153) \\
+ & 9 & \texttt{bios} (0.0138) \\
+ & 10 & \texttt{hda:} (0.0128) \\
+ & 11 & \texttt{lifo} (0.0127) \\
+ & 12 & \texttt{zone:} (0.0127) \\
+ & 13 & \texttt{pages,} (0.0127) \\
+ & 14 & \texttt{0} (0.0127) \\
+ & 15 & \texttt{06:06:24} (0.0119) \\
+\midrule
+Kernel Operations & 1 & \texttt{kernel:} (0.0500) \\
+ & 2 & \texttt{9} (0.0381) \\
+ & 3 & \texttt{10} (0.0256) \\
+ & 4 & \texttt{rhost=61.153.202.254} (0.0185) \\
+ & 5 & \texttt{10:18:09} (0.0185) \\
+ & 6 & \texttt{version} (0.0183) \\
+ & 7 & \texttt{1} (0.0143) \\
+ & 8 & \texttt{irq} (0.0134) \\
+ & 9 & \texttt{linux} (0.0123) \\
+ & 10 & \texttt{pci} (0.0112) \\
+ & 11 & \texttt{user=root} (0.0112) \\
+ & 12 & \texttt{rhost=60.30.224.116} (0.0106) \\
+ & 13 & \texttt{authentication} (0.0099) \\
+ & 14 & \texttt{ruser=} (0.0099) \\
+ & 15 & \texttt{failure;} (0.0099) \\
+\midrule
+Device Detection & 1 & \texttt{kernel:} (0.0568) \\
+ & 2 & \texttt{10} (0.0464) \\
+ & 3 & \texttt{9} (0.0351) \\
+ & 4 & \texttt{11:31:45} (0.0187) \\
+ & 5 & \texttt{06:06:21} (0.0185) \\
+ & 6 & \texttt{found} (0.0163) \\
+ & 7 & \texttt{check} (0.0159) \\
+ & 8 & \texttt{machine} (0.0159) \\
+ & 9 & \texttt{enabled} (0.0159) \\
+ & 10 & \texttt{11:31:47} (0.0151) \\
+ & 11 & \texttt{intel} (0.0149) \\
+ & 12 & \texttt{/dev/hda,} (0.0144) \\
+ & 13 & \texttt{device:} (0.0144) \\
+ & 14 & \texttt{network:} (0.0143) \\
+ & 15 & \texttt{10:56:41} (0.0123) \\
+\midrule
+Process Management & 1 & \texttt{9} (0.0836) \\
+ & 2 & \texttt{device} (0.0573) \\
+ & 3 & \texttt{node} (0.0496) \\
+ & 4 & \texttt{alert} (0.0332) \\
+ & 5 & \texttt{logrotate:} (0.0332) \\
+ & 6 & \texttt{abnormally} (0.0332) \\
+ & 7 & \texttt{[1]} (0.0332) \\
+ & 8 & \texttt{exited} (0.0332) \\
+ & 9 & \texttt{creating} (0.0320) \\
+ & 10 & \texttt{kernel:} (0.0266) \\
+ & 11 & \texttt{10} (0.0219) \\
+ & 12 & \texttt{06:07:26} (0.0189) \\
+ & 13 & \texttt{removing} (0.0177) \\
+ & 14 & \texttt{jul} (0.0084) \\
+ & 15 & \texttt{06:07:27} (0.0078) \\
+\midrule
+Authentication Failures & 1 & \texttt{authentication} (0.0899) \\
+ & 2 & \texttt{tty=nodevssh} (0.0899) \\
+ & 3 & \texttt{logname=} (0.0899) \\
+ & 4 & \texttt{uid=0} (0.0899) \\
+ & 5 & \texttt{euid=0} (0.0899) \\
+ & 6 & \texttt{failure;} (0.0899) \\
+ & 7 & \texttt{ruser=} (0.0899) \\
+ & 8 & \texttt{user=root} (0.0570) \\
+ & 9 & \texttt{22} (0.0196) \\
+ & 10 & \texttt{28} (0.0148) \\
+ & 11 & \texttt{rhost=unknown.sagonet.net} (0.0139) \\
+ & 12 & \texttt{11} (0.0139) \\
+ & 13 & \texttt{rhost=n219076184117.netvigator.com} (0.0129) \\
+ & 14 & \texttt{14} (0.0127) \\
+ & 15 & \texttt{rhost=218.188.2.4} (0.0104) \\
+\midrule
+Network Services & 1 & \texttt{9} (0.0943) \\
+ & 2 & \texttt{kernel:} (0.0887) \\
+ & 3 & \texttt{10} (0.0426) \\
+ & 4 & \texttt{named[2275]:} (0.0201) \\
+ & 5 & \texttt{11:31:45} (0.0173) \\
+ & 6 & \texttt{ipv4} (0.0168) \\
+ & 7 & \texttt{listening} (0.0168) \\
+ & 8 & \texttt{interface} (0.0168) \\
+ & 9 & \texttt{06:06:21} (0.0155) \\
+ & 10 & \texttt{06:06:24} (0.0141) \\
+ & 11 & \texttt{driver} (0.0132) \\
+ & 12 & \texttt{11:31:47} (0.0131) \\
+ & 13 & \texttt{registered} (0.0128) \\
+ & 14 & \texttt{succeeded} (0.0119) \\
+ & 15 & \texttt{06:06:34} (0.0106) \\
+\midrule
+SSH Authentication & 1 & \texttt{euid=0} (0.0880) \\
+ & 2 & \texttt{uid=0} (0.0880) \\
+ & 3 & \texttt{tty=nodevssh} (0.0879) \\
+ & 4 & \texttt{logname=} (0.0879) \\
+ & 5 & \texttt{ruser=} (0.0879) \\
+ & 6 & \texttt{failure;} (0.0879) \\
+ & 7 & \texttt{authentication} (0.0879) \\
+ & 8 & \texttt{user=root} (0.0555) \\
+ & 9 & \texttt{jul} (0.0393) \\
+ & 10 & \texttt{13} (0.0173) \\
+ & 11 & \texttt{29} (0.0132) \\
+ & 12 & \texttt{rhost=under-eepc58.kaist.ac.kr} (0.0115) \\
+ & 13 & \texttt{1} (0.0107) \\
+ & 14 & \texttt{4} (0.0103) \\
+ & 15 & \texttt{rhost=220.117.241.87} (0.0075) \\
+\midrule
+Kernel Messages & 1 & \texttt{kernel:} (0.1053) \\
+ & 2 & \texttt{10} (0.0656) \\
+ & 3 & \texttt{9} (0.0618) \\
+ & 4 & \texttt{11:31:44} (0.0328) \\
+ & 5 & \texttt{06:06:20} (0.0267) \\
+ & 6 & \texttt{11:31:47} (0.0197) \\
+ & 7 & \texttt{bios-e820:} (0.0125) \\
+ & 8 & \texttt{-} (0.0125) \\
+ & 9 & \texttt{ext3-fs:} (0.0100) \\
+ & 10 & \texttt{driver} (0.0094) \\
+ & 11 & \texttt{selinux:} (0.0087) \\
+ & 12 & \texttt{kernel} (0.0087) \\
+ & 13 & \texttt{ntpd[2296]:} (0.0087) \\
+ & 14 & \texttt{(reserved)} (0.0076) \\
+ & 15 & \texttt{11:31:46} (0.0075) \\
+\midrule
+Kerberos Authentication & 1 & \texttt{failed} (0.0814) \\
+ & 2 & \texttt{30} (0.0752) \\
+ & 3 & \texttt{authentication} (0.0721) \\
+ & 4 & \texttt{20:53:06} (0.0438) \\
+ & 5 & \texttt{163.27.187.39} (0.0362) \\
+ & 6 & \texttt{(163.27.187.39):} (0.0362) \\
+ & 7 & \texttt{kerberos} (0.0360) \\
+ & 8 & \texttt{succeeded} (0.0308) \\
+ & 9 & \texttt{startup} (0.0287) \\
+ & 10 & \texttt{20:53:04} (0.0284) \\
+ & 11 & \texttt{9} (0.0262) \\
+ & 12 & \texttt{connection} (0.0250) \\
+ & 13 & \texttt{software} (0.0236) \\
+ & 14 & \texttt{caused} (0.0236) \\
+ & 15 & \texttt{abort} (0.0236) \\
+\midrule
+Authentication Errors & 1 & \texttt{euid=0} (0.0836) \\
+ & 2 & \texttt{uid=0} (0.0836) \\
+ & 3 & \texttt{failure;} (0.0835) \\
+ & 4 & \texttt{tty=nodevssh} (0.0835) \\
+ & 5 & \texttt{authentication} (0.0835) \\
+ & 6 & \texttt{logname=} (0.0835) \\
+ & 7 & \texttt{ruser=} (0.0835) \\
+ & 8 & \texttt{15} (0.0348) \\
+ & 9 & \texttt{rhost=218.188.2.4} (0.0279) \\
+ & 10 & \texttt{12} (0.0242) \\
+ & 11 & \texttt{user=root} (0.0200) \\
+ & 12 & \texttt{user=test} (0.0149) \\
+ & 13 & \texttt{14} (0.0141) \\
+ & 14 & \texttt{rhost=218.38.14.205} (0.0113) \\
+ & 15 & \texttt{rhost=211.233.12.249} (0.0088) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-% Table: Top 3-5 topics per category
+Table~\ref{tab:category_topics} shows the top 5 topics for each category, representing the average topic distribution across documents in that category.
+
 \begin{table}[H]
 \centering
-\caption{Top topics per category}
+\caption{Top 5 topics per category}
+\label{tab:category_topics}
 \begin{tabular}{lll}
 \toprule
 Category & Rank & Topic (Probability) \\
 \midrule
-% TODO: Fill with actual data
-Category 1 & 1 & Topic X (0.XXXX) \\
-Category 1 & 2 & Topic Y (0.XXXX) \\
-% ... more rows ...
+Error & 1 & Topic 6 (0.2956) \\
+Error & 2 & Topic 4 (0.2851) \\
+Error & 3 & Topic 9 (0.1878) \\
+Error & 4 & Topic 8 (0.1055) \\
+Error & 5 & Topic 3 (0.0624) \\
+Normal & 1 & Topic 5 (0.3466) \\
+Normal & 2 & Topic 7 (0.1728) \\
+Normal & 3 & Topic 3 (0.1711) \\
+Normal & 4 & Topic 0 (0.0946) \\
+Normal & 5 & Topic 1 (0.0702) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textit{Main takeaways}: [To be filled after analysis]
+\textbf{Main takeaways}: The error category is dominated by authentication-related topics (Topics 6, 4, and 9: SSH Authentication, Authentication Failures, and Authentication Errors), which together account for 76.8\% of the topic distribution. The normal category is dominated by Topic 5 (Network Services) at 34.7\%, followed by Topic 7 (Kernel Messages) and Topic 3 (Process Management), reflecting routine system operations. The topic modeling successfully separated authentication failures from successful system operations, demonstrating that LDA can identify meaningful thematic patterns in log data.
 
-% Figure: LDA visualization
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=0.8\textwidth]{../output/topic_modeling/lda_visualization.png}
-% \caption{LDA topic visualization}
-% \end{figure}
+An interactive visualization of the topic model is available in \texttt{output/topic_modeling/lda\_visualization.html}, which allows exploration of topic relationships and term distributions.
 
 \subsection{Experimentation}
 
-% Table: Comparison of different normalization configurations
-% TODO: Fill with actual results from experiments.py output
+To understand the effects of different preprocessing configurations, I tested five normalization approaches with topic modeling, measuring coherence scores as an indicator of topic quality. Table~\ref{tab:experiments} shows the results.
 
 \begin{table}[H]
 \centering
 \caption{Comparison of preprocessing configurations}
-\begin{tabular}{llcc}
+\label{tab:experiments}
+\begin{tabular}{lcc}
 \toprule
-Configuration & Representation & Vocab Size & [Metric] \\
+Configuration & Vocab Size & Coherence \\
 \midrule
-% TODO: Fill with actual data
-raw & count & XXX & X.XX \\
-lowercase & count & XXX & X.XX \\
-lowercase\_stopwords & tfidf & XXX & X.XX \\
-% ... more rows ...
+raw & 1009 & 0.4319 \\
+lowercase & 970 & 0.4281 \\
+lowercase\_stopwords & 934 & 0.4559 \\
+lowercase\_stopwords\_stem & 913 & 0.3798 \\
+lowercase\_stopwords\_lemmatize & 929 & 0.4701 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textit{Main takeaways}: [To be filled after analysis]
+\textbf{Main takeaways}: The configuration with lowercase, stopword removal, and lemmatization achieved the highest coherence score (0.4701), indicating that this preprocessing combination produces the most interpretable topics. Lowercasing and stopword removal reduced vocabulary size from 1009 to 934 tokens while improving coherence from 0.4319 to 0.4559. Interestingly, lemmatization (coherence 0.4701) outperformed stemming (coherence 0.3798), suggesting that preserving valid dictionary forms is more beneficial for log text than aggressive stemming. The raw configuration had the largest vocabulary but lower coherence, indicating that preprocessing improves topic quality by reducing noise and normalizing word forms.

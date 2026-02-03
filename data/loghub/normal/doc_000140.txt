@@ -1,0 +1,1 @@
+Jun  9 06:06:25 combo kernel: NET: Registered protocol family 2

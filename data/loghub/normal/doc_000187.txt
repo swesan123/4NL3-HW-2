@@ -1,0 +1,1 @@
+Jun  9 06:06:32 combo kernel: Floppy drive(s): fd0 is 1.44M

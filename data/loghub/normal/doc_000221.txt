@@ -1,0 +1,1 @@
+Jun  9 06:06:45 combo udev[2054]: creating device node '/udev/lp0'

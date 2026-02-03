@@ -1,0 +1,1 @@
+Jun 10 11:31:44 combo kernel: klogd 1.4.1, log source = /proc/kmsg started.

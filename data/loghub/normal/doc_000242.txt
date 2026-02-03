@@ -1,0 +1,1 @@
+Jun  9 10:07:13 combo named[2275]: starting BIND 9.2.3 -u named -t /var/named/chroot

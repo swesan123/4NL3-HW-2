@@ -1,0 +1,1 @@
+Jun  9 06:10:35 combo ntpd[2296]: kernel time sync disabled 0041

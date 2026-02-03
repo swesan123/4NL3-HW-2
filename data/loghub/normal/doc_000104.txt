@@ -1,0 +1,1 @@
+Jun  9 06:06:23 combo kernel: ICH: not 100%% native mode: will probe irqs later

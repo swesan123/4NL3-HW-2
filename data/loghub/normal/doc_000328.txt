@@ -1,0 +1,1 @@
+Jun  9 06:10:35 combo ntpd[2296]: synchronized to LOCAL(0), stratum=10

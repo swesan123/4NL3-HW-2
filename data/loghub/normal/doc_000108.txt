@@ -1,0 +1,1 @@
+Jun  9 06:06:24 combo kernel: hda: IBM-DTLA-307015, ATA DISK drive

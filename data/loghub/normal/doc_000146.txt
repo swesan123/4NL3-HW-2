@@ -1,0 +1,1 @@
+Jun  9 06:06:26 combo kernel: checking if image is initramfs...it isn't (no cpio magic); looks like an initrd

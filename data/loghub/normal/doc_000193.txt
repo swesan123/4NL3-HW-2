@@ -1,0 +1,1 @@
+Jun  9 06:06:34 combo kernel: PCI: Found IRQ 5 for device 0000:01:0c.0

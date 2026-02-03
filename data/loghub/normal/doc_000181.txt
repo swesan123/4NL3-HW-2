@@ -1,0 +1,1 @@
+Jun  9 06:06:31 combo kernel: microcode: CPU0 already at revision 0x8 (current=0x8)
