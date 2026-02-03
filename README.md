@@ -1,20 +1,43 @@
 
-# Assignment 1 – Text Normalization and Token Frequency Analysis
+# Assignment 2 – Corpus Analysis
 
-## Files
-- `normalize_text.py` – Main script for normalization, counting, and analysis
+## Overview
+
+This project implements a complete corpus analysis pipeline for analyzing log datasets from LogHub. It performs bag-of-words conversion, Naive Bayes log-likelihood analysis, LDA topic modeling, and experimentation with different preprocessing configurations.
+
+## Files and Directories
+
+### Core Modules
+- `data_collection.py` – LogHub dataset collection with file size management
+- `bow_processor.py` – Bag-of-words conversion with sparse matrix support
+- `naive_bayes_analysis.py` – Naive Bayes LLR calculations
+- `topic_modeling.py` – LDA topic modeling using gensim
+- `experiments.py` – Experimentation framework for testing variations
+- `corpus_analysis.py` – Main pipeline orchestrating all analysis steps
+- `normalize_text.py` – Preprocessing functions (reused from HW-1)
+
+### Configuration and Scripts
 - `environment.yml` – Conda environment specification
-- `README.md` – Project documentation
-- `data/` – Input text corpora (Crime and Punishment, Linux system logs)
-- `output/` – Generated outputs (token count files and plots; created automatically)
-- `report/` – LaTeX report with analysis, figures, and results
-- `tests/` – Comprehensive test suite with unit and integration tests
----
+- `scripts/check_latex.sh` – Pre-commit LaTeX compilation check
+- `scripts/verify_pdf.py` – PDF verification script
+
+### Data and Output
+- `data/loghub/` – LogHub datasets organized by category
+- `output/` – Generated outputs (BoW matrices, analysis results, visualizations)
+- `report/` – Modular LaTeX report structure
+  - `main.tex` – Master LaTeX file
+  - `sections/` – Individual section files
+  - `format/` – Formatting and style files
+  - `config/` – Configuration files
+
+### Testing
+- `tests/` – Test suite (from HW-1)
 
 ## Requirements
-- Python 3.14
-- Conda 
+- Python 3.12 (gensim compatibility)
+- Conda
 - Required Python packages are listed in `environment.yml`
+- LaTeX distribution (for report compilation)
 
 ### Create or update the conda environment
 From the repository root:
@@ -26,29 +49,112 @@ conda activate 4nl3
 
 ## How to Run
 
+### Setup
+
 From the repository root:
 
 ```bash
-# activate the provided conda environment
+# Create or update conda environment
+conda env create -f environment.yml
 conda activate 4nl3
 
-# show help
-python normalize_text.py --help
-
-# basic run (tokenize + counts)
-python normalize_text.py data/pg2554.txt
-
-# full pipeline with plot
-python normalize_text.py data/pg2554.txt -lowercase -myopt -stopwords -stem -analyze
-
-# lemmatization instead of stemming
-python normalize_text.py data/Linux.txt -lowercase -lemmatize -analyze
+# Download NLTK data (if not already downloaded)
+python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet')"
 ```
 
-Notes:
-- Input and output use UTF-8.
-- The custom option `-myopt` removes digit-only tokens (e.g., years, timestamps, PIDs) to reduce sparsity.
-- `-stem` and `-lemmatize` are mutually exclusive by design.
+### Dataset Collection
+
+```bash
+# Collect LogHub dataset (adapt based on your dataset structure)
+python data_collection.py --local-path /path/to/loghub/data --min-docs 100
+```
+
+### Full Pipeline
+
+```bash
+# Run complete corpus analysis pipeline
+python corpus_analysis.py \
+    --data-dir data/loghub \
+    --output-dir output \
+    --lowercase \
+    --stopwords \
+    --num-topics 10
+
+# With experiments
+python corpus_analysis.py \
+    --data-dir data/loghub \
+    --output-dir output \
+    --lowercase \
+    --stopwords \
+    --experiments
+```
+
+### Individual Modules
+
+```bash
+# Bag-of-Words conversion
+python bow_processor.py \
+    --data-dir data/loghub \
+    --output-dir output/bow \
+    --representation count \
+    --lowercase --stopwords
+
+# Naive Bayes analysis
+python naive_bayes_analysis.py \
+    --data-dir data/loghub \
+    --output-dir output/naive_bayes \
+    --top-k 10 \
+    --lowercase --stopwords
+
+# Topic modeling
+python topic_modeling.py \
+    --data-dir data/loghub \
+    --output-dir output/topic_modeling \
+    --num-topics 10 \
+    --lowercase --stopwords
+
+# Find optimal number of topics
+python topic_modeling.py \
+    --data-dir data/loghub \
+    --find-optimal \
+    --lowercase --stopwords
+
+# Run experiments
+python experiments.py \
+    --data-dir data/loghub \
+    --output-dir output/experiments
+```
+
+### Report Compilation
+
+```bash
+# Compile LaTeX report
+cd report
+pdflatex main.tex
+pdflatex main.tex  # Run twice for references
+mv main.pdf homework2_report.pdf
+
+# Or use the check script
+bash scripts/check_latex.sh
+
+# Verify PDF
+python scripts/verify_pdf.py report/homework2_report.pdf
+```
+
+## Dataset Information
+
+This project uses datasets from the [LogHub repository](https://github.com/logpai/loghub). LogHub provides large-scale log parsing datasets including Apache, BGL, Hadoop, HDFS, HealthApp, and others.
+
+**Citation**: If using LogHub datasets, please cite:
+> He, P., Zhu, J., Zheng, Z., & Lyu, M. R. (2017). Drain: An online log parsing approach with fixed depth tree. In Proceedings of the 38th International Conference on Software Engineering Companion (ICSE-C '16).
+
+## Notes
+
+- All file operations use UTF-8 encoding
+- File size limits are enforced during dataset collection (default: 100MB per file)
+- Large datasets are sampled to meet requirements without excessive file sizes
+- Sparse matrices are used for memory efficiency with large document-term matrices
+- LaTeX compilation is checked via pre-commit hook
 
 ## Testing (For my personal testing)
 

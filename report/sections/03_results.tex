@@ -1,0 +1,99 @@
+% Section 3: Results and Analysis
+% Present results as formatted tables and figures.
+% Should have at least one table or figure for each of:
+% - 2.3 (Naive Bayes)
+% - 2.4 (Topic Modeling)
+% - 2.5 (Experimentation)
+% Include description of main takeaways for each table/figure.
+
+\section{Results and Analysis}
+
+\subsection{Naive Bayes Analysis}
+
+% Table: Top 10 words per category by LLR
+% TODO: Fill with actual results from naive_bayes_analysis.py output
+
+\begin{table}[H]
+\centering
+\caption{Top 10 words per category by log-likelihood ratio}
+\begin{tabular}{lll}
+\toprule
+Category & Rank & Word (LLR) \\
+\midrule
+% TODO: Fill with actual data
+Category 1 & 1 & word1 (X.XXXX) \\
+Category 1 & 2 & word2 (X.XXXX) \\
+% ... more rows ...
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textit{Main takeaways}: [To be filled after analysis]
+
+\subsection{Topic Modeling}
+
+% Table: Top 25 terms per topic with probabilities
+% TODO: Fill with actual results from topic_modeling.py output
+
+\begin{table}[H]
+\centering
+\caption{Top 25 terms per topic (showing first 10)}
+\begin{tabular}{lll}
+\toprule
+Topic & Rank & Term (Probability) \\
+\midrule
+% TODO: Fill with actual data
+Topic 0 & 1 & term1 (0.XXXX) \\
+Topic 0 & 2 & term2 (0.XXXX) \\
+% ... more rows ...
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Table: Top 3-5 topics per category
+\begin{table}[H]
+\centering
+\caption{Top topics per category}
+\begin{tabular}{lll}
+\toprule
+Category & Rank & Topic (Probability) \\
+\midrule
+% TODO: Fill with actual data
+Category 1 & 1 & Topic X (0.XXXX) \\
+Category 1 & 2 & Topic Y (0.XXXX) \\
+% ... more rows ...
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textit{Main takeaways}: [To be filled after analysis]
+
+% Figure: LDA visualization
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.8\textwidth]{../output/topic_modeling/lda_visualization.png}
+% \caption{LDA topic visualization}
+% \end{figure}
+
+\subsection{Experimentation}
+
+% Table: Comparison of different normalization configurations
+% TODO: Fill with actual results from experiments.py output
+
+\begin{table}[H]
+\centering
+\caption{Comparison of preprocessing configurations}
+\begin{tabular}{llcc}
+\toprule
+Configuration & Representation & Vocab Size & [Metric] \\
+\midrule
+% TODO: Fill with actual data
+raw & count & XXX & X.XX \\
+lowercase & count & XXX & X.XX \\
+lowercase\_stopwords & tfidf & XXX & X.XX \\
+% ... more rows ...
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textit{Main takeaways}: [To be filled after analysis]

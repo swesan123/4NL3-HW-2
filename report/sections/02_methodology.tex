@@ -1,0 +1,64 @@
+% Section 2: Methodology
+% Describe the steps performed and what informed your decisions.
+% Include details of preprocessing steps (lowercasing, stemming, etc.)
+% Describe the kind of analysis performed.
+% Mention which packages/libraries were used for steps not implemented yourself.
+
+\section{Methodology}
+
+\subsection{Preprocessing}
+
+The preprocessing pipeline reuses and extends functionality from Homework 1. The following normalization options were available:
+
+\begin{itemize}
+    \item \textbf{Lowercasing}: Converts all tokens to lowercase to reduce vocabulary size.
+    \item \textbf{Stopword Removal}: Removes common English stopwords using the NLTK stopword list.
+    \item \textbf{Stemming}: Applies Porter stemming to reduce words to their root forms.
+    \item \textbf{Lemmatization}: Applies WordNet lemmatization to normalize words to their dictionary form (mutually exclusive with stemming).
+    \item \textbf{Digit Removal}: Removes tokens that consist only of digits (custom option from HW-1).
+\end{itemize}
+
+Tokenization is performed using manual whitespace splitting, as in Homework 1. All file operations use UTF-8 encoding with error replacement for robustness.
+
+\subsection{Bag-of-Words Conversion}
+
+Documents were converted to bag-of-words format using scipy sparse matrices for memory efficiency. Three representation types were supported:
+\begin{itemize}
+    \item \textbf{Count}: Raw token counts per document
+    \item \textbf{Binary}: Binary indicators (1 if token appears, 0 otherwise)
+    \item \textbf{TF-IDF}: Term frequency-inverse document frequency transformation
+\end{itemize}
+
+\subsection{Naive Bayes Analysis}
+
+Naive Bayes probabilities were computed for each word and category:
+\begin{itemize}
+    \item $P(w|c)$: Probability of word $w$ given category $c$ (with add-one smoothing)
+    \item $P(w|C_o)$: Probability of word $w$ given other categories (equation 2 from assignment)
+    \item Log-likelihood ratio: $\mathrm{LLR}(w,c) = \log(P(w|c)) - \log(P(w|C_o))$
+\end{itemize}
+
+The top 10 words per category were extracted based on LLR scores.
+
+\subsection{Topic Modeling}
+
+Latent Dirichlet Allocation (LDA) was performed using the \texttt{gensim} library. The number of topics was chosen based on coherence optimization or manual inspection. For each topic:
+\begin{itemize}
+    \item Top 25 terms with probabilities were extracted
+    \item Topic distributions per document were computed
+    \item Average topic distributions per category were calculated
+    \item Top 3-5 topics per category were identified
+\end{itemize}
+
+Visualizations were generated using \texttt{pyLDAvis}.
+
+\subsection{Libraries Used}
+
+\begin{itemize}
+    \item \texttt{gensim}: LDA topic modeling
+    \item \texttt{pyLDAvis}: Topic visualization
+    \item \texttt{scipy}: Sparse matrix operations
+    \item \texttt{scikit-learn}: TF-IDF transformation
+    \item \texttt{nltk}: Preprocessing (stopwords, stemming, lemmatization)
+    \item \texttt{numpy}, \texttt{pandas}: Data manipulation
+\end{itemize}
