@@ -7,7 +7,7 @@ This project implements a complete corpus analysis pipeline for analyzing log da
 ## Files and Directories
 
 ### Core Modules
-- `data_collection.py` – LogHub dataset collection with file size management
+- `data_collection.py` – Dataset organization and preprocessing
 - `bow_processor.py` – Bag-of-words conversion with sparse matrix support
 - `naive_bayes_analysis.py` – Naive Bayes LLR calculations
 - `topic_modeling.py` – LDA topic modeling using gensim
@@ -30,7 +30,7 @@ This project implements a complete corpus analysis pipeline for analyzing log da
 
 ## Requirements
 
-- Python 3.14
+- Python 3.12
 - Conda (for environment management)
 - Required Python packages are listed in `environment.yml`
 
@@ -46,10 +46,7 @@ conda activate 4nl3
 # 2. Download required NLTK data
 python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet')"
 
-# 3. (Optional) Collect dataset if not already present
-# python data_collection.py --output-dir data/loghub
-
-# 4. Run the complete analysis pipeline
+# 3. Run the complete analysis pipeline
 python corpus_analysis.py \
     --data-dir data/loghub \
     --output-dir output \
@@ -63,32 +60,9 @@ Results will be saved in the `output/` directory.
 
 ## Setup
 
-### 1. Create Conda Environment
+### Dataset Structure
 
-From the repository root:
-
-```bash
-conda env create -f environment.yml
-conda activate 4nl3
-```
-
-### 2. Download NLTK Data
-
-```bash
-python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet')"
-```
-
-### 3. Prepare Dataset
-
-The dataset should be organized in `data/loghub/` with subdirectories for each category. Each category directory should contain text files (documents). The dataset should have at least 100 documents per category.
-
-**If you're cloning this repository**, the dataset may already be present. If not, you can collect it using:
-
-```bash
-python data_collection.py --output-dir data/loghub
-```
-
-Example structure:
+The dataset is organized in `data/loghub/` with subdirectories for each category. Each category directory contains text files (documents). The dataset structure is:
 ```
 data/loghub/
 ├── error/
@@ -208,14 +182,12 @@ After running the pipeline, you'll find:
 
 This project uses datasets from the [LogHub repository](https://github.com/logpai/loghub). LogHub provides large-scale log parsing datasets including Apache, BGL, Hadoop, HDFS, HealthApp, and others.
 
-**Citation**: If using LogHub datasets, please cite:
+**Citation**: 
 > He, P., Zhu, J., Zheng, Z., & Lyu, M. R. (2017). Drain: An online log parsing approach with fixed depth tree. In Proceedings of the 38th International Conference on Software Engineering Companion (ICSE-C '16).
 
 ## Notes
 
 - All file operations use UTF-8 encoding
-- File size limits are enforced during dataset collection (default: 100MB per file)
-- Large datasets are sampled to meet requirements without excessive file sizes
 - Sparse matrices are used for memory efficiency with large document-term matrices
 - The pipeline supports various preprocessing options: `--lowercase`, `--stopwords`, `--stem`, `--lemmatize`
 
