@@ -48,179 +48,68 @@ Normal & 10 & \texttt{06:06:24} (3.5587) \\
 
 \subsection{Topic Modeling}
 
-Latent Dirichlet Allocation with 10 topics was applied to the corpus. Table~\ref{tab:topics} shows the top 15 terms for each topic, with manually assigned topic labels based on the most prominent terms.
+Latent Dirichlet Allocation with 10 topics was applied to the corpus. For each topic, the top 25 terms were extracted and manually assigned topic labels based on the most prominent terms. Tables~\ref{tab:topics1}--\ref{tab:topics3} show the top 10 terms for each topic (selected from the top 25 for readability), organized into three compact tables.
 
 \begin{table}[H]
 \centering
-\caption{Top terms per topic (showing first 15 terms)}
-\label{tab:topics}
-\begin{tabular}{lll}
+\caption{Top terms per topic - Part 1 (Topics 1-4)}
+\label{tab:topics1}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.5cm}p{11cm}}
 \toprule
-Topic & Rank & Term (Probability) \\
+Topic & Top 10 Terms (Probability) \\
 \midrule
-System Startup & 1 & \texttt{kernel:} (0.0760) \\
- & 2 & \texttt{9} (0.0609) \\
- & 3 & \texttt{10} (0.0368) \\
- & 4 & \texttt{06:06:20} (0.0185) \\
- & 5 & \texttt{succeeded} (0.0184) \\
- & 6 & \texttt{11:31:44} (0.0180) \\
- & 7 & \texttt{startup} (0.0170) \\
- & 8 & \texttt{11:31:46} (0.0153) \\
- & 9 & \texttt{bios} (0.0138) \\
- & 10 & \texttt{hda:} (0.0128) \\
- & 11 & \texttt{lifo} (0.0127) \\
- & 12 & \texttt{zone:} (0.0127) \\
- & 13 & \texttt{pages,} (0.0127) \\
- & 14 & \texttt{0} (0.0127) \\
- & 15 & \texttt{06:06:24} (0.0119) \\
+System Startup & \texttt{kernel:} (0.0760), \texttt{9} (0.0609), \texttt{10} (0.0368), \texttt{06:06:20} (0.0185), \texttt{succeeded} (0.0184), \texttt{11:31:44} (0.0180), \texttt{startup} (0.0170), \texttt{11:31:46} (0.0153), \texttt{bios} (0.0138), \texttt{hda:} (0.0128) \\
 \midrule
-Kernel Operations & 1 & \texttt{kernel:} (0.0500) \\
- & 2 & \texttt{9} (0.0381) \\
- & 3 & \texttt{10} (0.0256) \\
- & 4 & \texttt{rhost=61.153.202.254} (0.0185) \\
- & 5 & \texttt{10:18:09} (0.0185) \\
- & 6 & \texttt{version} (0.0183) \\
- & 7 & \texttt{1} (0.0143) \\
- & 8 & \texttt{irq} (0.0134) \\
- & 9 & \texttt{linux} (0.0123) \\
- & 10 & \texttt{pci} (0.0112) \\
- & 11 & \texttt{user=root} (0.0112) \\
- & 12 & \texttt{rhost=60.30.224.116} (0.0106) \\
- & 13 & \texttt{authentication} (0.0099) \\
- & 14 & \texttt{ruser=} (0.0099) \\
- & 15 & \texttt{failure;} (0.0099) \\
+Kernel Operations & \texttt{kernel:} (0.0500), \texttt{9} (0.0381), \texttt{10} (0.0256), \texttt{rhost=61.153.202.254} (0.0185), \texttt{10:18:09} (0.0185), \texttt{version} (0.0183), \texttt{1} (0.0143), \texttt{irq} (0.0134), \texttt{linux} (0.0123), \texttt{pci} (0.0112) \\
 \midrule
-Device Detection & 1 & \texttt{kernel:} (0.0568) \\
- & 2 & \texttt{10} (0.0464) \\
- & 3 & \texttt{9} (0.0351) \\
- & 4 & \texttt{11:31:45} (0.0187) \\
- & 5 & \texttt{06:06:21} (0.0185) \\
- & 6 & \texttt{found} (0.0163) \\
- & 7 & \texttt{check} (0.0159) \\
- & 8 & \texttt{machine} (0.0159) \\
- & 9 & \texttt{enabled} (0.0159) \\
- & 10 & \texttt{11:31:47} (0.0151) \\
- & 11 & \texttt{intel} (0.0149) \\
- & 12 & \texttt{/dev/hda,} (0.0144) \\
- & 13 & \texttt{device:} (0.0144) \\
- & 14 & \texttt{network:} (0.0143) \\
- & 15 & \texttt{10:56:41} (0.0123) \\
+Device Detection & \texttt{kernel:} (0.0568), \texttt{10} (0.0464), \texttt{9} (0.0351), \texttt{11:31:45} (0.0187), \texttt{06:06:21} (0.0185), \texttt{found} (0.0163), \texttt{check} (0.0159), \texttt{machine} (0.0159), \texttt{enabled} (0.0159), \texttt{11:31:47} (0.0151) \\
 \midrule
-Process Management & 1 & \texttt{9} (0.0836) \\
- & 2 & \texttt{device} (0.0573) \\
- & 3 & \texttt{node} (0.0496) \\
- & 4 & \texttt{alert} (0.0332) \\
- & 5 & \texttt{logrotate:} (0.0332) \\
- & 6 & \texttt{abnormally} (0.0332) \\
- & 7 & \texttt{[1]} (0.0332) \\
- & 8 & \texttt{exited} (0.0332) \\
- & 9 & \texttt{creating} (0.0320) \\
- & 10 & \texttt{kernel:} (0.0266) \\
- & 11 & \texttt{10} (0.0219) \\
- & 12 & \texttt{06:07:26} (0.0189) \\
- & 13 & \texttt{removing} (0.0177) \\
- & 14 & \texttt{jul} (0.0084) \\
- & 15 & \texttt{06:07:27} (0.0078) \\
-\midrule
-Authentication Failures & 1 & \texttt{authentication} (0.0899) \\
- & 2 & \texttt{tty=nodevssh} (0.0899) \\
- & 3 & \texttt{logname=} (0.0899) \\
- & 4 & \texttt{uid=0} (0.0899) \\
- & 5 & \texttt{euid=0} (0.0899) \\
- & 6 & \texttt{failure;} (0.0899) \\
- & 7 & \texttt{ruser=} (0.0899) \\
- & 8 & \texttt{user=root} (0.0570) \\
- & 9 & \texttt{22} (0.0196) \\
- & 10 & \texttt{28} (0.0148) \\
- & 11 & \texttt{rhost=unknown.sagonet.net} (0.0139) \\
- & 12 & \texttt{11} (0.0139) \\
- & 13 & \texttt{rhost=n219076184117.netvigator.com} (0.0129) \\
- & 14 & \texttt{14} (0.0127) \\
- & 15 & \texttt{rhost=218.188.2.4} (0.0104) \\
-\midrule
-Network Services & 1 & \texttt{9} (0.0943) \\
- & 2 & \texttt{kernel:} (0.0887) \\
- & 3 & \texttt{10} (0.0426) \\
- & 4 & \texttt{named[2275]:} (0.0201) \\
- & 5 & \texttt{11:31:45} (0.0173) \\
- & 6 & \texttt{ipv4} (0.0168) \\
- & 7 & \texttt{listening} (0.0168) \\
- & 8 & \texttt{interface} (0.0168) \\
- & 9 & \texttt{06:06:21} (0.0155) \\
- & 10 & \texttt{06:06:24} (0.0141) \\
- & 11 & \texttt{driver} (0.0132) \\
- & 12 & \texttt{11:31:47} (0.0131) \\
- & 13 & \texttt{registered} (0.0128) \\
- & 14 & \texttt{succeeded} (0.0119) \\
- & 15 & \texttt{06:06:34} (0.0106) \\
-\midrule
-SSH Authentication & 1 & \texttt{euid=0} (0.0880) \\
- & 2 & \texttt{uid=0} (0.0880) \\
- & 3 & \texttt{tty=nodevssh} (0.0879) \\
- & 4 & \texttt{logname=} (0.0879) \\
- & 5 & \texttt{ruser=} (0.0879) \\
- & 6 & \texttt{failure;} (0.0879) \\
- & 7 & \texttt{authentication} (0.0879) \\
- & 8 & \texttt{user=root} (0.0555) \\
- & 9 & \texttt{jul} (0.0393) \\
- & 10 & \texttt{13} (0.0173) \\
- & 11 & \texttt{29} (0.0132) \\
- & 12 & \texttt{rhost=under-eepc58.kaist.ac.kr} (0.0115) \\
- & 13 & \texttt{1} (0.0107) \\
- & 14 & \texttt{4} (0.0103) \\
- & 15 & \texttt{rhost=220.117.241.87} (0.0075) \\
-\midrule
-Kernel Messages & 1 & \texttt{kernel:} (0.1053) \\
- & 2 & \texttt{10} (0.0656) \\
- & 3 & \texttt{9} (0.0618) \\
- & 4 & \texttt{11:31:44} (0.0328) \\
- & 5 & \texttt{06:06:20} (0.0267) \\
- & 6 & \texttt{11:31:47} (0.0197) \\
- & 7 & \texttt{bios-e820:} (0.0125) \\
- & 8 & \texttt{-} (0.0125) \\
- & 9 & \texttt{ext3-fs:} (0.0100) \\
- & 10 & \texttt{driver} (0.0094) \\
- & 11 & \texttt{selinux:} (0.0087) \\
- & 12 & \texttt{kernel} (0.0087) \\
- & 13 & \texttt{ntpd[2296]:} (0.0087) \\
- & 14 & \texttt{(reserved)} (0.0076) \\
- & 15 & \texttt{11:31:46} (0.0075) \\
-\midrule
-Kerberos Authentication & 1 & \texttt{failed} (0.0814) \\
- & 2 & \texttt{30} (0.0752) \\
- & 3 & \texttt{authentication} (0.0721) \\
- & 4 & \texttt{20:53:06} (0.0438) \\
- & 5 & \texttt{163.27.187.39} (0.0362) \\
- & 6 & \texttt{(163.27.187.39):} (0.0362) \\
- & 7 & \texttt{kerberos} (0.0360) \\
- & 8 & \texttt{succeeded} (0.0308) \\
- & 9 & \texttt{startup} (0.0287) \\
- & 10 & \texttt{20:53:04} (0.0284) \\
- & 11 & \texttt{9} (0.0262) \\
- & 12 & \texttt{connection} (0.0250) \\
- & 13 & \texttt{software} (0.0236) \\
- & 14 & \texttt{caused} (0.0236) \\
- & 15 & \texttt{abort} (0.0236) \\
-\midrule
-Authentication Errors & 1 & \texttt{euid=0} (0.0836) \\
- & 2 & \texttt{uid=0} (0.0836) \\
- & 3 & \texttt{failure;} (0.0835) \\
- & 4 & \texttt{tty=nodevssh} (0.0835) \\
- & 5 & \texttt{authentication} (0.0835) \\
- & 6 & \texttt{logname=} (0.0835) \\
- & 7 & \texttt{ruser=} (0.0835) \\
- & 8 & \texttt{15} (0.0348) \\
- & 9 & \texttt{rhost=218.188.2.4} (0.0279) \\
- & 10 & \texttt{12} (0.0242) \\
- & 11 & \texttt{user=root} (0.0200) \\
- & 12 & \texttt{user=test} (0.0149) \\
- & 13 & \texttt{14} (0.0141) \\
- & 14 & \texttt{rhost=218.38.14.205} (0.0113) \\
- & 15 & \texttt{rhost=211.233.12.249} (0.0088) \\
+Process Management & \texttt{9} (0.0836), \texttt{device} (0.0573), \texttt{node} (0.0496), \texttt{alert} (0.0332), \texttt{logrotate:} (0.0332), \texttt{abnormally} (0.0332), \texttt{[1]} (0.0332), \texttt{exited} (0.0332), \texttt{creating} (0.0320), \texttt{kernel:} (0.0266) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\caption{Top terms per topic - Part 2 (Topics 5-7)}
+\label{tab:topics2}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.5cm}p{11cm}}
+\toprule
+Topic & Top 10 Terms (Probability) \\
+\midrule
+Authentication Failures & \texttt{authentication} (0.0899), \texttt{tty=nodevssh} (0.0899), \texttt{logname=} (0.0899), \texttt{uid=0} (0.0899), \texttt{euid=0} (0.0899), \texttt{failure;} (0.0899), \texttt{ruser=} (0.0899), \texttt{user=root} (0.0570), \texttt{22} (0.0196), \texttt{28} (0.0148) \\
+\midrule
+Network Services & \texttt{9} (0.0943), \texttt{kernel:} (0.0887), \texttt{10} (0.0426), \texttt{named[2275]:} (0.0201), \texttt{11:31:45} (0.0173), \texttt{ipv4} (0.0168), \texttt{listening} (0.0168), \texttt{interface} (0.0168), \texttt{06:06:21} (0.0155), \texttt{06:06:24} (0.0141) \\
+\midrule
+SSH Authentication & \texttt{euid=0} (0.0880), \texttt{uid=0} (0.0880), \texttt{tty=nodevssh} (0.0879), \texttt{logname=} (0.0879), \texttt{ruser=} (0.0879), \texttt{failure;} (0.0879), \texttt{authentication} (0.0879), \texttt{user=root} (0.0555), \texttt{jul} (0.0393), \texttt{13} (0.0173) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Top terms per topic - Part 3 (Topics 8-10)}
+\label{tab:topics3}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.5cm}p{11cm}}
+\toprule
+Topic & Top 10 Terms (Probability) \\
+\midrule
+Kernel Messages & \texttt{kernel:} (0.1053), \texttt{10} (0.0656), \texttt{9} (0.0618), \texttt{11:31:44} (0.0328), \texttt{06:06:20} (0.0267), \texttt{11:31:47} (0.0197), \texttt{bios-e820:} (0.0125), \texttt{-} (0.0125), \texttt{ext3-fs:} (0.0100), \texttt{driver} (0.0094) \\
+\midrule
+Kerberos Authentication & \texttt{failed} (0.0814), \texttt{30} (0.0752), \texttt{authentication} (0.0721), \texttt{20:53:06} (0.0438), \texttt{163.27.187.39} (0.0362), \texttt{kerberos} (0.0360), \texttt{succeeded} (0.0308), \texttt{startup} (0.0287), \texttt{20:53:04} (0.0284), \texttt{connection} (0.0250) \\
+\midrule
+Authentication Errors & \texttt{euid=0} (0.0836), \texttt{uid=0} (0.0836), \texttt{failure;} (0.0835), \texttt{tty=nodevssh} (0.0835), \texttt{authentication} (0.0835), \texttt{logname=} (0.0835), \texttt{ruser=} (0.0835), \texttt{15} (0.0348), \texttt{rhost=218.188.2.4} (0.0279), \texttt{12} (0.0242) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
 Table~\ref{tab:category_topics} shows the top 5 topics for each category, representing the average topic distribution across documents in that category.
 
 \begin{table}[H]
@@ -247,8 +136,9 @@ Normal & 5 & Topic 1 (0.0702) \\
 
 \textbf{Main takeaways}: The error category is dominated by authentication-related topics (Topics 6, 4, and 9: SSH Authentication, Authentication Failures, and Authentication Errors), which together account for 76.8\% of the topic distribution. The normal category is dominated by Topic 5 (Network Services) at 34.7\%, followed by Topic 7 (Kernel Messages) and Topic 3 (Process Management), reflecting routine system operations. The topic modeling successfully separated authentication failures from successful system operations, demonstrating that LDA can identify meaningful thematic patterns in log data.
 
-An interactive visualization of the topic model is available in \texttt{output/topic_modeling/lda\_visualization.html}, which allows exploration of topic relationships and term distributions.
+An interactive visualization of the topic model is available in the file \texttt{lda\_visualization.html} (located in \texttt{output/topic\_modeling/}), which allows exploration of topic relationships and term distributions.
 
+\clearpage
 \subsection{Experimentation}
 
 To understand the effects of different preprocessing configurations, I tested five normalization approaches with topic modeling, measuring coherence scores as an indicator of topic quality. Table~\ref{tab:experiments} shows the results.

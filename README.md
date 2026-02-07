@@ -1,4 +1,3 @@
-
 # Assignment 2 – Corpus Analysis
 
 ## Overview
@@ -18,61 +17,99 @@ This project implements a complete corpus analysis pipeline for analyzing log da
 
 ### Configuration and Scripts
 - `environment.yml` – Conda environment specification
-- `scripts/check_latex.sh` – Pre-commit LaTeX compilation check
-- `scripts/verify_pdf.py` – PDF verification script
+- `scripts/generate_tables.py` – Generate LaTeX tables from analysis results (optional)
 
 ### Data and Output
 - `data/loghub/` – LogHub datasets organized by category
 - `output/` – Generated outputs (BoW matrices, analysis results, visualizations)
-- `report/` – Modular LaTeX report structure
-  - `main.tex` – Master LaTeX file
-  - `sections/` – Individual section files
-  - `format/` – Formatting and style files
-  - `config/` – Configuration files
-
-### Testing
-- `tests/` – Test suite (from HW-1)
+  - `output/bow/` – Bag-of-words matrices and vocabulary
+  - `output/naive_bayes/` – Naive Bayes LLR results
+  - `output/topic_modeling/` – LDA model and topic distributions
+  - `output/experiments/` – Experimentation results
+- `report/` – LaTeX report source files (optional, for report generation)
 
 ## Requirements
-- Python 3.12 (gensim compatibility)
-- Conda
-- Required Python packages are listed in `environment.yml`
-- LaTeX distribution (for report compilation)
 
-### Create or update the conda environment
+- Python 3.14
+- Conda (for environment management)
+- Required Python packages are listed in `environment.yml`
+
+## Quick Start
+
+If you've cloned this repository, follow these steps to run the analysis:
+
+```bash
+# 1. Create and activate conda environment
+conda env create -f environment.yml
+conda activate 4nl3
+
+# 2. Download required NLTK data
+python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet')"
+
+# 3. (Optional) Collect dataset if not already present
+# python data_collection.py --output-dir data/loghub
+
+# 4. Run the complete analysis pipeline
+python corpus_analysis.py \
+    --data-dir data/loghub \
+    --output-dir output \
+    --lowercase \
+    --stopwords \
+    --num-topics 10 \
+    --experiments
+```
+
+Results will be saved in the `output/` directory.
+
+## Setup
+
+### 1. Create Conda Environment
+
 From the repository root:
 
 ```bash
 conda env create -f environment.yml
 conda activate 4nl3
+```
+
+### 2. Download NLTK Data
+
+```bash
+python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet')"
+```
+
+### 3. Prepare Dataset
+
+The dataset should be organized in `data/loghub/` with subdirectories for each category. Each category directory should contain text files (documents). The dataset should have at least 100 documents per category.
+
+**If you're cloning this repository**, the dataset may already be present. If not, you can collect it using:
+
+```bash
+python data_collection.py --output-dir data/loghub
+```
+
+Example structure:
+```
+data/loghub/
+├── error/
+│   ├── doc_000001.txt
+│   ├── doc_000002.txt
+│   └── ...
+├── normal/
+│   ├── doc_000001.txt
+│   ├── doc_000002.txt
+│   └── ...
+└── dataset_metadata.json
 ```
 
 ## How to Run
 
-### Setup
+### Complete Pipeline (Recommended)
 
-From the repository root:
-
-```bash
-# Create or update conda environment
-conda env create -f environment.yml
-conda activate 4nl3
-
-# Download NLTK data (if not already downloaded)
-python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet')"
-```
-
-### Dataset Collection
+Run the full corpus analysis pipeline with all required steps:
 
 ```bash
-# Collect LogHub dataset (adapt based on your dataset structure)
-python data_collection.py --local-path /path/to/loghub/data --min-docs 100
-```
-
-### Full Pipeline
-
-```bash
-# Run complete corpus analysis pipeline
+# Basic run with default settings
 python corpus_analysis.py \
     --data-dir data/loghub \
     --output-dir output \
@@ -80,33 +117,51 @@ python corpus_analysis.py \
     --stopwords \
     --num-topics 10
 
-# With experiments
+# With experiments (Section 2.5)
 python corpus_analysis.py \
     --data-dir data/loghub \
     --output-dir output \
     --lowercase \
     --stopwords \
+    --num-topics 10 \
     --experiments
 ```
 
+This will execute:
+1. **Dataset Loading** – Load documents by category
+2. **Bag-of-Words Conversion** (Section 2.2) – Convert documents to BoW format
+3. **Naive Bayes Analysis** (Section 2.3) – Compute log-likelihood ratios for top words per category
+4. **Topic Modeling** (Section 2.4) – Run LDA and compute topic distributions
+5. **Experiments** (Section 2.5) – Test different preprocessing configurations (if `--experiments` flag is used)
+
 ### Individual Modules
 
+You can also run each module separately:
+
+#### Bag-of-Words Conversion
+
 ```bash
-# Bag-of-Words conversion
 python bow_processor.py \
     --data-dir data/loghub \
     --output-dir output/bow \
     --representation count \
     --lowercase --stopwords
+```
 
-# Naive Bayes analysis
+#### Naive Bayes Analysis
+
+```bash
 python naive_bayes_analysis.py \
     --data-dir data/loghub \
     --output-dir output/naive_bayes \
     --top-k 10 \
     --lowercase --stopwords
+```
 
-# Topic modeling
+#### Topic Modeling
+
+```bash
+# Standard topic modeling
 python topic_modeling.py \
     --data-dir data/loghub \
     --output-dir output/topic_modeling \
@@ -118,28 +173,36 @@ python topic_modeling.py \
     --data-dir data/loghub \
     --find-optimal \
     --lowercase --stopwords
+```
 
-# Run experiments
+#### Run Experiments
+
+```bash
 python experiments.py \
     --data-dir data/loghub \
     --output-dir output/experiments
 ```
 
-### Report Compilation
+## Output Files
 
-```bash
-# Compile LaTeX report
-cd report
-pdflatex main.tex
-pdflatex main.tex  # Run twice for references
-mv main.pdf homework2_report.pdf
+After running the pipeline, you'll find:
 
-# Or use the check script
-bash scripts/check_latex.sh
+- **BoW Results** (`output/bow/`):
+  - `bow_matrix.npz` – Sparse document-term matrix
+  - `bow_vocabulary.json` – Vocabulary mapping
+  - `bow_metadata.json` – Metadata about the BoW conversion
 
-# Verify PDF
-python scripts/verify_pdf.py report/homework2_report.pdf
-```
+- **Naive Bayes Results** (`output/naive_bayes/`):
+  - `naive_bayes_results.json` – Top words per category with LLR scores
+  - `llr_scores.json` – All LLR scores
+
+- **Topic Modeling Results** (`output/topic_modeling/`):
+  - `lda_model.model` – Trained LDA model
+  - `topic_modeling_results.json` – Topic distributions and top terms
+  - `lda_visualization.html` – Interactive visualization (if pyLDAvis is available)
+
+- **Experiment Results** (`output/experiments/`):
+  - Results from different preprocessing configurations
 
 ## Dataset Information
 
@@ -154,63 +217,27 @@ This project uses datasets from the [LogHub repository](https://github.com/logpa
 - File size limits are enforced during dataset collection (default: 100MB per file)
 - Large datasets are sampled to meet requirements without excessive file sizes
 - Sparse matrices are used for memory efficiency with large document-term matrices
-- LaTeX compilation is checked via pre-commit hook
+- The pipeline supports various preprocessing options: `--lowercase`, `--stopwords`, `--stem`, `--lemmatize`
 
-## Testing (For my personal testing)
+## Generative AI Usage Disclosure
 
-A comprehensive test suite is included to ensure correctness and robustness.
-
-### Run Tests
-
-```bash
-# activate environment
-conda activate 4nl3
-
-# install test dependencies (if not already installed)
-pip install pytest pytest-cov
-
-# run all fast tests (recommended)
-pytest tests/ -m "not slow" -v
-
-# run all tests including slow combinations with real data
-pytest tests/ -v
-
-# run specific test files
-pytest tests/test_functions.py -v          # unit tests
-pytest tests/test_all_combinations.py -v   # all 48 flag combinations
-
-# run with coverage report
-pytest tests/ --cov=normalize_text --cov-report=html
-```
-
-### Test Coverage
-
-- **Unit tests** (`test_functions.py`) - Tests for individual functions (tokenization, normalization, file I/O)
-- **Integration tests** (`test_integration.py`) - Command-line execution and flag combinations
-- **Combination tests** (`test_all_combinations.py`) - All 48 valid flag combinations tested to ensure soundness
-
-The test suite validates:
-- All normalization functions work correctly
-- All 48 valid flag combinations execute successfully
-- Mutually exclusive flags (stem/lemmatize) are properly rejected
-- UTF-8 error handling with malformed byte sequences
-- Output files are created correctly
-
-## Rationale: UTF-8 with errors="replace"
-
-The file reader uses UTF-8 with `errors="replace"` to ensure that any malformed bytes in large or mixed-encoding corpora do not crash the run. Invalid sequences are replaced with the Unicode replacement character, allowing processing to continue while keeping output deterministic.
-
-## Generative AI Usage Disclosure (Required)
-
-Generative AI tools were used **only for conceptual clarification, debugging guidance, and assistance with code structure and documentation wording**. All final code, decisions, and interpretations were written and verified by the student.
+Generative AI tools (specifically Cursor AI Assistant) were used extensively throughout this assignment for conceptual clarification, debugging guidance, code structure assistance, and documentation wording. All final code, decisions, and interpretations were written and verified by the student.
 
 ### AI Usage Details
-- **Model:** ChatGPT 5.2
-- **Provider:** OpenAI
-- **Hardware type:** Cloud-based GPU/accelerator
-- **Region of compute:** Unknown
-- **Time used:** Approximately 2–3 hours total across multiple short interactions
-- **How values were estimated:** Time was approximated based on active interaction duration during development and debugging
-- **Estimated emissions:**  
-  ~4.32 g CO₂ per query × ~25 queries ≈ **108 g CO₂**
+- **Model:** Cursor AI Assistant (Claude-based model)
+- **Provider:** Anthropic (via Cursor IDE)
+- **Primary uses:**
+  - Code structure and architecture design for corpus analysis pipeline
+  - Debugging Python import errors and dependency issues
+  - Assistance with LaTeX table generation and formatting
+  - Clarification of Naive Bayes LLR calculations and topic modeling concepts
+  - Documentation and README writing assistance
+- **Time used:** Approximately 4-6 hours of active AI assistance over the course of assignment completion
+- **Estimated emissions:**
+  - Estimated queries/interactions: ~50-75 interactions over 4-6 hours
+  - Average emissions per query (Claude-based models): ~4.32 g CO₂ per query
+  - Calculation: 50 queries × 4.32 g CO₂ = 216 g CO₂ (0.216 kg CO₂) to 75 queries × 4.32 g CO₂ = 324 g CO₂ (0.324 kg CO₂)
+  - **Total estimated emissions:** 0.2-0.3 kg CO₂ equivalent
 
+### Student Contribution
+All analysis results, interpretations, and conclusions presented in this work are my own. The AI assistant was used as a tool for implementation and clarification, but all analytical insights, discussion points, and final code decisions were made and verified by me.

@@ -8,23 +8,23 @@
 
 \subsection{Preprocessing}
 
-The preprocessing pipeline reuses and extends functionality from Homework 1. The following normalization options were available:
+The preprocessing pipeline reuses and extends functionality from Homework 1. For the main analysis, I applied lowercase conversion and stopword removal, as these preprocessing steps improved topic coherence scores in preliminary experiments. The following normalization options were available:
 
 \begin{itemize}
-    \item \textbf{Lowercasing}: Converts all tokens to lowercase to reduce vocabulary size.
-    \item \textbf{Stopword Removal}: Removes common English stopwords using the NLTK stopword list.
-    \item \textbf{Stemming}: Applies Porter stemming to reduce words to their root forms.
-    \item \textbf{Lemmatization}: Applies WordNet lemmatization to normalize words to their dictionary form (mutually exclusive with stemming).
-    \item \textbf{Digit Removal}: Removes tokens that consist only of digits (custom option from HW-1).
+    \item \textbf{Lowercasing}: Converts all tokens to lowercase to reduce vocabulary size. This was applied to all analyses.
+    \item \textbf{Stopword Removal}: Removes common English stopwords using the NLTK stopword list. This was applied to all analyses.
+    \item \textbf{Stemming}: Applies Porter stemming to reduce words to their root forms. Tested in experiments but not used in main analysis.
+    \item \textbf{Lemmatization}: Applies WordNet lemmatization to normalize words to their dictionary form (mutually exclusive with stemming). Tested in experiments and found to improve topic coherence.
+    \item \textbf{Digit Removal}: Removes tokens that consist only of digits (custom option from HW-1). Not applied in this assignment.
 \end{itemize}
 
-Tokenization is performed using manual whitespace splitting, as in Homework 1. All file operations use UTF-8 encoding with error replacement for robustness.
+Tokenization is performed using manual whitespace splitting, as in Homework 1. All file operations use UTF-8 encoding with error replacement for robustness. The main analysis used lowercase conversion and stopword removal, which reduced vocabulary size from 1009 (raw) to 934 tokens while improving topic coherence from 0.4319 to 0.4559.
 
 \subsection{Bag-of-Words Conversion}
 
-Documents were converted to bag-of-words format using scipy sparse matrices for memory efficiency. Three representation types were supported:
+Documents were converted to bag-of-words format using scipy sparse matrices for memory efficiency. The main analysis used count-based representation (raw token counts per document). Three representation types were supported and tested in experiments:
 \begin{itemize}
-    \item \textbf{Count}: Raw token counts per document
+    \item \textbf{Count}: Raw token counts per document (used in main analysis)
     \item \textbf{Binary}: Binary indicators (1 if token appears, 0 otherwise)
     \item \textbf{TF-IDF}: Term frequency-inverse document frequency transformation
 \end{itemize}
