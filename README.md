@@ -15,9 +15,8 @@ This project implements a complete corpus analysis pipeline for analyzing log da
 - `corpus_analysis.py` – Main pipeline orchestrating all analysis steps
 - `normalize_text.py` – Preprocessing functions (reused from HW-1)
 
-### Configuration and Scripts
+### Configuration
 - `environment.yml` – Conda environment specification
-- `scripts/generate_tables.py` – Generate LaTeX tables from analysis results (optional)
 
 ### Data and Output
 - `data/loghub/` – LogHub datasets organized by category
