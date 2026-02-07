@@ -25,7 +25,15 @@ This project implements a complete corpus analysis pipeline for analyzing log da
   - `output/naive_bayes/` – Naive Bayes LLR results
   - `output/topic_modeling/` – LDA model and topic distributions
   - `output/experiments/` – Experimentation results
-- `report/` – LaTeX report source files (optional, for report generation)
+
+### Report
+- `report/` – LaTeX report source files and compiled PDF
+  - `report/homework2_report.tex` – Main LaTeX source file
+  - `report/homework2_report.pdf` – Compiled report PDF
+  - `report/config/` – LaTeX configuration files (metadata, etc.)
+  - `report/format/` – LaTeX formatting files (packages, geometry, custom commands)
+  - `report/sections/` – Report sections (dataset, methodology, results, discussion, AI disclosure)
+- `homework2_report.pdf` – Copy of the compiled report in root directory
 
 ## Requirements
 
